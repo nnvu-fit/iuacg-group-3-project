@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
+  m_Name: runtime.fadeMotionList
+  m_EditorClassIdentifier: 
+  MotionInstanceIds: 06f9ffffd0f8ffffa8f8ffff80f8ffff4eebffff26ebfffffeeaffffd6eaffff
+  CubismFadeMotionObjects:
+  - {fileID: 11400000, guid: 6543f6caf7b29c04db2c9bba4800bf29, type: 2}
+  - {fileID: 11400000, guid: 536964f093612604eb10bd7e3f060dd7, type: 2}
+  - {fileID: 11400000, guid: e4eaecc9c9eb85d4eb57f03a8b3bef4f, type: 2}
+  - {fileID: 11400000, guid: 0d9bf3ab24fbfdf4ab6ce6dddcf6bbbf, type: 2}
+  - {fileID: 11400000, guid: e1c9a46eea3347348908cd847c32533e, type: 2}
+  - {fileID: 11400000, guid: 0c47054c869054747b934795a0003e5e, type: 2}
+  - {fileID: 11400000, guid: d4f0451470336aa4bba1c1210c3af5fd, type: 2}
+  - {fileID: 11400000, guid: 2c9b365399a4f2b4f8e828bee24c83c7, type: 2}
