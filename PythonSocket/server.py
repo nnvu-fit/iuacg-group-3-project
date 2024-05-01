@@ -3,7 +3,8 @@ import json
 from constants import HOST, PORT
 import socket_utils as su
 from landmark import landmark
-
+from uuid import uuid4
+import os
 
 
 def _format_face_blendshape(blendshape):
@@ -13,12 +14,15 @@ def _format_face_blendshape(blendshape):
         "display_name": blendshape.display_name,
         "category_name": blendshape.category_name,
     }
+
+
 def _format_landmark(lm):
     result = {}
     result["face_blendshapes"] = [[_format_face_blendshape(bs) for bs in lm.face_blendshapes[0]]]
     return result
 
-if __name__ == "__main__":
+
+def start_server():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
         s.listen()
@@ -26,11 +30,18 @@ if __name__ == "__main__":
         conn, addr = s.accept()
         with conn:
             print(f"Connected by {addr}")
-            image_path = "ignored/image-saved-by-server.png"
-            su.receive_file(conn, image_path)
-            detected_lm = landmark(image_path)
-            lm_json = _format_landmark(detected_lm)
-            su.send_string(conn, json.dumps(lm_json))
+            while True:
+                image_path = f"ignored/received-image-{str(uuid4())}.png"
+                su.receive_file(conn, image_path)
+                detected_lm = landmark(image_path)
+                lm_json = _format_landmark(detected_lm)
+                su.send_string(conn, json.dumps(lm_json))
+                os.remove(image_path)  # delete temp image
 
-            # detected_lm.face_blendshapes
-            su.send_string(conn, "HELLOO  FROM SERVER")
+
+if __name__ == "__main__":
+    while True:
+        try:
+            start_server()
+        except Exception as exc:
+            print(exc)
