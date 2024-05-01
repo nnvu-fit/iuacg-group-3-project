@@ -134,7 +134,7 @@ public class SocketController : MonoBehaviour
                     LandmarkModelList landmarkModelListResult = JsonUtility.FromJson<LandmarkModelList>(resultString);
 
                     // do nothing if the the landmark model list has an error
-                    if (landmarkModelListResult.Error != null)
+                    if (landmarkModelListResult?.Error != null)
                     {
                         Debug.Log("[SocketController] " + landmarkModelListResult.Error);
                     }
