@@ -5,6 +5,7 @@ import socket_utils as su
 from landmark import landmark
 from uuid import uuid4
 import os
+import logging
 
 
 def _format_face_blendshape(blendshape):
@@ -44,4 +45,5 @@ if __name__ == "__main__":
         try:
             start_server()
         except Exception as exc:
-            print(exc)
+            logging.exception("Something went wrong")
+
