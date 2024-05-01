@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using UnityEngine;
@@ -145,8 +148,11 @@ public class SocketController : MonoBehaviour
                     imageBytes = null;
                 }
 
-                // sleep for 100 milliseconds
-                System.Threading.Thread.Sleep(100);
+                        // sleep for 800 milliseconds
+                        System.Threading.Thread.Sleep(800);
+                    }
+                }
+
             }
         }
         catch (System.Exception e)

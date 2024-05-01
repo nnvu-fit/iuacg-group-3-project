@@ -6,6 +6,7 @@ from face import detect_face
 from landmark import landmark
 from uuid import uuid4
 import os
+import logging
 
 
 def _format_face_blendshape(blendshape):
@@ -30,8 +31,9 @@ def start_server():
         conn, addr = s.accept()
         with conn:
             print(f"Connected by {addr}")
+            i = 0
             while True:
-                image_path = f"ignored{PATH_SPLIT}received-image-{str(uuid4())}.png"
+                image_path = f"ignored{PATH_SPLIT}received-image-{i}-{str(uuid4())}.png"
                 su.receive_file(conn, image_path)
 
                 # detect face, if no face detected, send error message, otherwise send landmark data
@@ -45,6 +47,7 @@ def start_server():
                     lm_json = _format_landmark(detected_lm)
                     su.send_string(conn, json.dumps(lm_json))
                 os.remove(image_path)  # delete temp image
+                i += 1
 
 
 if __name__ == "__main__":
@@ -52,4 +55,5 @@ if __name__ == "__main__":
         try:
             start_server()
         except Exception as exc:
-            print(exc)
+            logging.exception("Something went wrong")
+
