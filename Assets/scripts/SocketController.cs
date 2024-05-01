@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -74,6 +75,11 @@ public class SocketController : MonoBehaviour
                     if (imageBytes != null)
                     {
                         // send the image bytes to the server
+                        int sizeByteCount = imageBytes.Length;
+                        byte[] sizeByteCountBytes = BitConverter.GetBytes(sizeByteCount);
+                        System.Array.Reverse(sizeByteCountBytes);
+                        client.Send(sizeByteCountBytes);
+
                         client.Send(imageBytes);
 
                         // receive the response from the server
