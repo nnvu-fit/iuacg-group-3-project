@@ -90,8 +90,8 @@ public class SocketController : MonoBehaviour
                         // set image bytes to null
                         imageBytes = null;
 
-                        // sleep for 100 milliseconds
-                        System.Threading.Thread.Sleep(100);
+                        // sleep for 800 milliseconds
+                        System.Threading.Thread.Sleep(800);
                     }
                 }
 
