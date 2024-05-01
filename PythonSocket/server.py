@@ -19,7 +19,11 @@ def _format_face_blendshape(blendshape):
 
 def _format_landmark(lm):
     result = {}
-    result["face_blendshapes"] = [[_format_face_blendshape(bs) for bs in lm.face_blendshapes[0]]]
+    result["success"] = False
+    first_person_blendshapes = lm.face_blendshapes[0] if lm.face_blendshapes else []
+    if first_person_blendshapes:
+        result["success"] = True
+    result["face_blendshapes"] = [[_format_face_blendshape(bs) for bs in first_person_blendshapes]]
     return result
 
 
