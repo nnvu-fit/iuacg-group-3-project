@@ -1,0 +1,15 @@
+FROM python:3.10
+
+EXPOSE 65432
+
+RUN apt update && apt install -y ffmpeg libsm6 libxext6
+
+WORKDIR /app
+COPY ./requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+
+CMD ["python", "-u", "server.py"]
+
+# docker build -t iuacg-group3-python .
+# docker run -p 65432:65432 iuacg-group3-python
