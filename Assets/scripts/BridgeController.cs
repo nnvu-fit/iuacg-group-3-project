@@ -42,7 +42,10 @@ public class BridgeController : MonoBehaviour
         WebCamTexture webcamTexture = new WebCamTexture(devices[0].name)
         {
             // set the fps to 15
-            requestedFPS = 15
+            requestedFPS = 15,
+            // set resolution to 640x480
+            requestedWidth = 640,
+            requestedHeight = 480
         };
 
         rawImage.texture = webcamTexture;
