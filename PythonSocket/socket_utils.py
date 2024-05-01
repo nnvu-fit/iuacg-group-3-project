@@ -31,16 +31,12 @@ def send_string(conn, string):
         remaining_string = remaining_string[sent_bytes:]
 
 def receive_file(conn, filename):
-    # get the expected length (eight bytes long, always)
-    expected_size = b""
-    while len(expected_size) < 8:
-        more_size = conn.recv(8 - len(expected_size))
-        if not more_size:
-            raise Exception("Short file length received")
-        expected_size += more_size
-
-    # convert to int, the expected file length
-    expected_size = int.from_bytes(expected_size, 'big')
+    print(f"receive_file: filename={filename}")
+    # get the expected length
+    expected_size_byte_len = 4
+    expected_size_bytes = conn.recv(expected_size_byte_len)
+    expected_size = int.from_bytes(expected_size_bytes, 'big')
+    print(f"expected_size={expected_size}")
     max_chunk_size_bytes = min(
         1048576,  # 1MB
         expected_size,
