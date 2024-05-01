@@ -73,7 +73,7 @@ public class SocketController : MonoBehaviour
         {
             modelController.landmarkModels = landmarkModelList.FaceBlendshapes;
         }
-        
+
 
         // if (imageBytes != null)
         // {
@@ -124,7 +124,7 @@ public class SocketController : MonoBehaviour
                     // receive the response from the server
                     byte[] resultLengthBytes = new byte[8];
                     int resultLength = client.Receive(resultLengthBytes);
-
+                    // receive the result bytes from the server
                     byte[] resultBytes = new byte[System.BitConverter.ToInt32(resultLengthBytes)];
                     int result = client.Receive(resultBytes);
 
@@ -146,16 +146,14 @@ public class SocketController : MonoBehaviour
 
                     // set image bytes to null
                     imageBytes = null;
-                }
 
-                        // sleep for 800 milliseconds
-                        System.Threading.Thread.Sleep(800);
-                    }
+                    // sleep for 800 milliseconds
+                    System.Threading.Thread.Sleep(800);
                 }
 
             }
         }
-        catch (System.Exception e)
+        catch (Exception e)
         {
             Debug.Log("[SocketController] " + e.ToString());
 
