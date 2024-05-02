@@ -122,7 +122,7 @@ public class SocketController : MonoBehaviour
                     int bytesSent = client.Send(imageBytes);
 
                     // receive the response from the server
-                    byte[] resultLengthBytes = new byte[8];
+                    byte[] resultLengthBytes = new byte[4];
                     int resultLength = client.Receive(resultLengthBytes);
                     // receive the result bytes from the server
                     byte[] resultBytes = new byte[System.BitConverter.ToInt32(resultLengthBytes)];
