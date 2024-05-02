@@ -29,7 +29,6 @@ def receive_file(conn: socket, filename):
     expected_size = int.from_bytes(expected_size_bytes, byte_order)
 
     if not expected_size:
-        print(f"return False")
         return False
 
     max_chunk_size_bytes = min(
