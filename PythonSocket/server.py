@@ -21,7 +21,8 @@ def _format_face_blendshape(blendshape):
 
 def _format_landmark(lm):
     result = {}
-    result["face_blendshapes"] = [_format_face_blendshape(bs) for bs in lm.face_blendshapes[0]]
+    blendshapes = lm.face_blendshapes[0] if lm.face_blendshapes else []
+    result["face_blendshapes"] = [_format_face_blendshape(bs) for bs in blendshapes]
     return result
 
 def start_server():

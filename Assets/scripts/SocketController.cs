@@ -130,6 +130,8 @@ public class SocketController : MonoBehaviour
 
                     // convert the result bytes to string
                     string resultString = System.Text.Encoding.UTF8.GetString(resultBytes);
+                    Debug.Log("resultString=" + resultString);
+
                     // convert the result string to landmark model list object using JSON deserialization from snake case
                     LandmarkModelList landmarkModelListResult = JsonUtility.FromJson<LandmarkModelList>(resultString);
 
