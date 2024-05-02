@@ -1,5 +1,6 @@
 FROM python:3.10 as base
 
+RUN pip install --upgrade pip
 RUN apt update && apt install -y ffmpeg libsm6 libxext6
 
 FROM base
@@ -14,4 +15,6 @@ COPY . .
 CMD ["python", "-u", "server.py"]
 
 # docker build -t iuacg-group3-python .
-# docker run -p 65432:65432 iuacg-group3-python
+# docker run --name iuacg-pod -p 65432:65432 iuacg-group3-python
+# docker exec -it iuacg-pod bash
+# docker rm iuacg-pod
