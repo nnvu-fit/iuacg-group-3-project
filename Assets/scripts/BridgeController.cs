@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BridgeController : MonoBehaviour
@@ -7,6 +5,9 @@ public class BridgeController : MonoBehaviour
     // register Image reference to webcam texture
     [SerializeField]
     private UnityEngine.UI.RawImage rawImage;
+    // register frame rate
+    [SerializeField, Range(1, 30)]
+    private int frameRate = 15;
 
     // image getter from the webcam texture and return png format
     public byte[] GetImageBytes()
@@ -42,7 +43,7 @@ public class BridgeController : MonoBehaviour
         WebCamTexture webcamTexture = new WebCamTexture(devices[0].name)
         {
             // set the fps to 15
-            requestedFPS = 15,
+            requestedFPS = frameRate,
             // set resolution to 640x480
             requestedWidth = 640,
             requestedHeight = 480
@@ -58,10 +59,16 @@ public class BridgeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // get camera resolution
-        Debug.Log("[BridgeController] width:" + rawImage.texture.width + " height:" + rawImage.texture.height);
+        // update frame rate of the camera
+        WebCamTexture webcamTexture = (WebCamTexture)rawImage.texture;
+        webcamTexture.requestedFPS = frameRate;
+
+        // move the rawImage to the left bottom corner
+        rawImage.rectTransform.anchoredPosition = new Vector2(
+            -rawImage.rectTransform.sizeDelta.x / 2 + rawImage.texture.width / 4,
+            -rawImage.rectTransform.sizeDelta.y / 2);
+
         // update rawImage resolution to camera resolution with scale to fit one half of the screen
         rawImage.rectTransform.sizeDelta = new Vector2(rawImage.texture.width / 2, rawImage.texture.height / 2);
-        
     }
 }
