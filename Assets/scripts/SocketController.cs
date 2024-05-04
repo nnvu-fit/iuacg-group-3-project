@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using UnityEngine;
+using Live2D.Cubism.Core;
+using Live2D.Cubism.Framework;
 
 public class SocketController : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class SocketController : MonoBehaviour
     [SerializeField] private string serverIP = "127.0.0.1";
     // setup the server port
     [SerializeField] private int serverPort = 65432;
+
+    [SerializeField] private CubismModel cubismModel;
 
     // setup the bridge controller
     private BridgeController bridgeController;
@@ -36,7 +40,7 @@ public class SocketController : MonoBehaviour
         }
 
         // Program is suspended if modelController is null
-        if (!TryGetComponent<ModelController>(out modelController))
+        if (!cubismModel.TryGetComponent<ModelController>(out modelController))
         {
             Debug.LogError("[SocketController] ModelController is null");
             return;
