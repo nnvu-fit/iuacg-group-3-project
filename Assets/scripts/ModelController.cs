@@ -19,7 +19,7 @@ public class ModelController : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+    // LateUpdate is called after Update once per frame
     void LateUpdate()
     {     
         //Init all face model landmark
