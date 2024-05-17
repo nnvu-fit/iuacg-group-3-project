@@ -67,11 +67,7 @@ After covid-19, the need to meet online increases. And by the evolution of VR, A
 
 ## Usage
 
-1. Start the Unity project:
-
-    - In Unity, click on the "Play" button to start the project.
-
-2. Start the Python server:
+1. Start the Python server:
 
     - Open a terminal or command prompt.
     - Navigate to the "./PythonSocket" directory of the cloned repository.
@@ -80,5 +76,9 @@ After covid-19, the need to meet online increases. And by the evolution of VR, A
         ```bash
         python server.py
         ```
+
+2. Start the Unity project:
+
+    - In Unity, click on the "Play" button to start the project.
 
 3. Follow the instructions on how to use the project.
