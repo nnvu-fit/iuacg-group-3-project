@@ -33,7 +33,7 @@ After covid-19, the need to meet online increases. And by the evolution of VR, A
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/nnvu-fit/iuacg-group-3-project.git
+    git clone https://github.com/nnvu-fit/iuacg-group-4-project.git
     ```
 
 2. Install Unity:
